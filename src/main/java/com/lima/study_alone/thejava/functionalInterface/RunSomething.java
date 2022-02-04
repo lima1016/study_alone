@@ -1,4 +1,4 @@
-package com.lima.study_alone.thejava.day1;
+package com.lima.study_alone.thejava.functionalInterface;
 
 // 추상 메소드가 몇개있어??? => 1개면 함수형 인터페이스 (functionalInterface)
 // 추상 메소드가 딱 하나만 있으면 함수형 인터페이스다.

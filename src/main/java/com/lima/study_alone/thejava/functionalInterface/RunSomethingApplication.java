@@ -1,6 +1,6 @@
-package com.lima.study_alone.thejava.day1;
+package com.lima.study_alone.thejava.functionalInterface;
 
-public class Foo {
+public class RunSomethingApplication {
   public static void main(String[] args) {
 
     // **첫번째 예제**
