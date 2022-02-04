@@ -1,9 +1,6 @@
 package com.lima.study_alone.thejava.functionalInterface;
 
-import jdk.incubator.vector.VectorOperators;
-import org.apache.tomcat.util.modeler.ParameterInfo;
-
-import java.util.function.*;
+import java.util.function.UnaryOperator;
 
 public class Plus10Application {
   public static void main(String[] args) {
@@ -63,7 +60,7 @@ public class Plus10Application {
     // BiFunction<T, U, R>
     // 두 개의 값(T, U)를 받아서 R 타입을 리턴하는 함수 인터페이스
     // R apply(T t, U u)
-    
+
     // BinaryOperator<T>
     // BiFunction<T, U, R>의 특수한 형태로, 동일한 타입의 입렵값 두개를 받아 리턴하는 함수
 
