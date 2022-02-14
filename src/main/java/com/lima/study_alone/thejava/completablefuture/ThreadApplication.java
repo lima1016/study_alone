@@ -8,7 +8,7 @@ Concurrent 소프트웨어
 자바 멀티쓰레드 프로그래밍
   ● Thread / Runnable
  */
-public class Application {
+public class ThreadApplication {
   public static void main(String[] args) throws InterruptedException {
 
     // **첫번째 예제**
