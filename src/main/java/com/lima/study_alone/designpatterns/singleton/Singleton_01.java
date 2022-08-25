@@ -1,6 +1,8 @@
 package com.lima.study_alone.designpatterns.singleton;
 
 /**
+ * https://happy-coding-day.tistory.com/entry/%EC%8B%B1%EA%B8%80%ED%86%A4Singleton-%ED%8C%A8%ED%84%B4-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0
+ * https://crazy-horse.tistory.com/119
  * 싱글톤(Singleton)
  * 인스턴스를 오직 한개만 제공하는 클래스
  * 시스템 런타임, 환경 세팅에 대한 정보 등, 인스턴스가 여러개 일 때 문제가 생길 수 있는 경우가 있다.
