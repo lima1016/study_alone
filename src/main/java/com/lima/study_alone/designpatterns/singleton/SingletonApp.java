@@ -1,10 +1,9 @@
 package com.lima.study_alone.designpatterns.singleton;
 
 import java.io.*;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public class Singleton_App {
+public class SingletonApp {
 
   public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, IOException, ClassNotFoundException {
     // true
@@ -31,15 +30,15 @@ public class Singleton_App {
 //    constructor.setAccessible(true);
 //    Singleton_05 two = constructor.newInstance();
 
-    Singleton_07 one = Singleton_07.INSTANCE;
-    Singleton_07 two = null;
+    Singleton07 one = Singleton07.INSTANCE;
+    Singleton07 two = null;
     // Singleton_06 직렬화 코드 추가
     try (ObjectOutput out = new ObjectOutputStream(new FileOutputStream("settings.obj"))) {
       out.writeObject(one);
     }
 
     try (ObjectInput in = new ObjectInputStream(new FileInputStream("settings.obj"))) {
-      two = (Singleton_07) in.readObject();
+      two = (Singleton07) in.readObject();
     }
 
 //    Constructor<?>[] declaredConstructors = Singleton_07.class.getDeclaredConstructors();
@@ -54,12 +53,4 @@ public class Singleton_App {
 
     System.out.println(one == two);
   }
-  /**
-   * 싱글톤 (Singleton) 패턴 복습
-   * 직접 말하며 설명하고 코딩해 보세요.
-   * • 자바에서 enum을 사용하지 않고 싱글톤 패턴을 구현하는 방법은?
-   * • private 생성자와 static 메소드를 사용하는 방법의 단점은?
-   * • enum을 사용해 싱글톤 패턴을 구현하는 방법의 장점과 단점은?
-   * • static inner 클래스를 사용해 싱글톤 패턴을 구현하라.
-   */
 }

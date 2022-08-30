@@ -14,15 +14,15 @@ package com.lima.study_alone.designpatterns.singleton;
  * - static 메서드에 synchronized 블록이 있다면 class 단위로 lock을 거는 것.
  * - 클래스의 락, 만약 락이 인스턴스의 락이라면, 동기화시 하나의 객체를 보장할 수 없게 되기 때문이다.
  */
-public class Singleton_02 {
+public class Singleton02 {
 
-  private static Singleton_02 instance;
-  private Singleton_02() {
+  private static Singleton02 instance;
+  private Singleton02() {
   }
 
-  public static synchronized Singleton_02 getInstance() {
+  public static synchronized Singleton02 getInstance() {
     if (instance == null) {
-      instance = new Singleton_02();
+      instance = new Singleton02();
     }
     return instance;
   }

@@ -12,24 +12,24 @@ package com.lima.study_alone.designpatterns.singleton;
  * - 인스턴스를 메인 메모리에 저장하고 읽기 때문에 값 불일치 문제를 해결할 수 있다.
  * - 접근 성능은 느리지만, 변수의 접근(read, write)에 대한 정합성을 보장한다.
  */
-public class Singleton_04 {
+public class Singleton04 {
 
   // volatile을 써줘야만 자바 1.5 이상부터 동작하는 double check  locking이 동작함
-  private static volatile Singleton_04 instance;
-  private Singleton_04() {
+  private static volatile Singleton04 instance;
+  private Singleton04() {
   }
 
   // double check locking
   // 인스턴스를 필요로하는 시점에 만들 수 있다.
   // 메소드에 synchronized를 쓰는것 보다 성능이 나음.
-  public static Singleton_04 getInstance() {
+  public static Singleton04 getInstance() {
     // 첫번째 체크
     if (instance == null) {
       // Singleton_04.class 를 lock으로 쓰게 해줌
-      synchronized (Singleton_04.class) {
+      synchronized (Singleton04.class) {
         // 두번째 체크
         if (instance == null) {
-          instance = new Singleton_04();
+          instance = new Singleton04();
         }
       }
     }

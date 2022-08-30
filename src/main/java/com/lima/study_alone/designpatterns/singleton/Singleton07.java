@@ -12,7 +12,7 @@ package com.lima.study_alone.designpatterns.singleton;
  * - enum은 기본적으로 enum이라는 클래스를 상속받고 있고 이클래스는 이미 Serializeble을 상속하고 있기 때문에 enum도 별다른 안전장치를 마련하지 않아도
  * 한전한 직렬화, 역직렬화가 가능하다.
  */
-public enum Singleton_07 {
+public enum Singleton07 {
   // enum은 미리 인스턴스가 만들어짐
   INSTANCE;
 }

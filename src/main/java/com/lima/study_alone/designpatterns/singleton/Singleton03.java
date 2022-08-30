@@ -10,16 +10,16 @@ package com.lima.study_alone.designpatterns.singleton;
  * - try-catch를 사용하여 unchecked 예외로 변환시켜야힌디.
  * - 생성자에서 예외를 던진다면, 그안에서 try-catch 으로 예외 핸들링을 해야한다. 그렇지 않다면 이른 초기화를 사용할 수 없다.
  */
-public class Singleton_03 {
+public class Singleton03 {
 
   // 이른 초기화(eager initialization) 사용
   // thead safe함 - 여러 스레드가 들어오더라도 미리 만들어 놓은 INSTANCE를 리턴해주기 때문에
   // 안쓰는데도 미리 만들어놓기 때문에 성능에 문제가 있을 수 있다.
-  private static final Singleton_03 INSTANCE = new Singleton_03();
-  private Singleton_03() {
+  private static final Singleton03 INSTANCE = new Singleton03();
+  private Singleton03() {
   }
 
-  public static Singleton_03 getInstance() {
+  public static Singleton03 getInstance() {
 
     return INSTANCE;
   }

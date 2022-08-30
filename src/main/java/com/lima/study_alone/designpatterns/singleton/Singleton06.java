@@ -18,13 +18,13 @@ import java.io.*;
  * - try 안ㅇ네서 AutoCloseable을 구현한 객체가 선언되었을 경우 close() 메소드를 호출해주는 구문.
  * - try 코드 블럭이 끝다면 자동으로 자원을 종료해주기 때문에 명시적으로 자원 반환을 하지 않아도 된다.
  */
-public class Singleton_06 implements Serializable {
+public class Singleton06 implements Serializable {
   private static class SingletonHolder {
-    private static final Singleton_06 SINGLETON_06 = new Singleton_06();
+    private static final Singleton06 SINGLETON_06 = new Singleton06();
   }
 
-  public static Singleton_06 getInstance() {
-    return Singleton_06.SingletonHolder.SINGLETON_06;
+  public static Singleton06 getInstance() {
+    return Singleton06.SingletonHolder.SINGLETON_06;
   }
 
   // 이 시그니처를 갖고있으면 역직렬화를 반듯이 사용하게 됨.
@@ -33,15 +33,15 @@ public class Singleton_06 implements Serializable {
     return getInstance();
   }
   public static void main(String[] args) throws IOException, ClassNotFoundException {
-    Singleton_06 one = Singleton_06.getInstance();
-    Singleton_06 two = null;
+    Singleton06 one = Singleton06.getInstance();
+    Singleton06 two = null;
 
     try (ObjectOutput out = new ObjectOutputStream(new FileOutputStream("settings.obj"))) {
       out.writeObject(one);
     }
 
     try (ObjectInput in = new ObjectInputStream(new FileInputStream("settings.obj"))) {
-      two = (Singleton_06) in.readObject();
+      two = (Singleton06) in.readObject();
     }
     System.out.println(one == two);
   }

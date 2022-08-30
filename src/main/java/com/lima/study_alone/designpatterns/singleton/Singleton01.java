@@ -22,15 +22,15 @@ package com.lima.study_alone.designpatterns.singleton;
  * 새롭게 생성된 인스턴스에서도  instance가 null인지 여부를 판단하게 되는데,
  * 이때 새로운 스레드에는 생성된 instance 가 없기 때문에 한 개의 인스턴스를 보장할 수 없다.
  */
-public class Singleton_01 {
+public class Singleton01 {
 
-  private static Singleton_01 instance;
-  private Singleton_01() {
+  private static Singleton01 instance;
+  private Singleton01() {
   }
 
-  public static Singleton_01 getInstance() {
+  public static Singleton01 getInstance() {
     if (instance == null) {
-      instance = new Singleton_01();
+      instance = new Singleton01();
     }
     return instance;
   }

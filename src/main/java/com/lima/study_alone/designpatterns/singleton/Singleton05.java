@@ -9,14 +9,14 @@ package com.lima.study_alone.designpatterns.singleton;
  * - static 필드는 클래스가 처음 로딩될 때 정적인 메모리 공간에 만들어지는데, holder가 가지고있는 클래스가 로딩되는 시점은 getInstance()를 호출할 때
  * 호딩되기 때문에 lazy-initialization 이라 한다.
  */
-public class Singleton_05 {
+public class Singleton05 {
 
   // 멀티 스레드 환경에서도 안전하고, getInstance가 호출 될때 인스턴스가 만들어지고 lazy 로딩도 가능한 코드가 됨.
   private static class SingletonHolder {
-    private static final Singleton_05 SINGLETON_05 = new Singleton_05();
+    private static final Singleton05 SINGLETON_05 = new Singleton05();
   }
 
-  public static Singleton_05 getInstance() {
+  public static Singleton05 getInstance() {
     return SingletonHolder.SINGLETON_05;
   }
 }
