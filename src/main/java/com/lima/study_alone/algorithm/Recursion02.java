@@ -12,7 +12,7 @@ import java.util.Scanner;
  * 순환함수는 복잡한 알고리즘을 단순하고 알기쉽게 표현하는 것을 가능하게 한다.
  * 하지만 함수 호출에 따른 호버해드가 있다 (매개변수 전달, 액티베이션 프레임 생성 등)
  */
-public class Recursion_02 {
+public class Recursion02 {
 
   public static int length(String str) {
     if (str.equals(""))

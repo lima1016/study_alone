@@ -1,7 +1,7 @@
 package com.lima.study_alone.algorithm;
 
 // 재귀
-public class Recursion_01 {
+public class Recursion01 {
   // 최대 공약수
   // m >= n인 두 양의 정수 m과 n에 대해서 m이 n의 배수이면 gcd(m, n)-n 이고, 그렇지 않으면 gcd(m, n) = gcd(n, m%n)이다.
   public double gcd(int m, int n) {
@@ -25,7 +25,7 @@ public class Recursion_01 {
     else return gcd2(q, p % q);
   }
   public static void main(String[] args) {
-    Recursion_01 r = new Recursion_01();
+    Recursion01 r = new Recursion01();
 //    System.out.println(r.gcd(1563, 88));
     System.out.println(r.gcd2(554, 23));
   }
