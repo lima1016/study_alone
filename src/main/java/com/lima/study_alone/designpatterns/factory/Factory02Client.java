@@ -9,11 +9,22 @@ package com.lima.study_alone.designpatterns.factory;
 public class Factory02Client {
   public static void main(String[] args) {
     Factory02Client client = new Factory02Client();
+    client.print(new Factory02YellowShipFactory(), "yellowShip", "limlim@mail.com");
+    client.print(new Factory02YellowShipFactory(), "blackShip", "hello@mail.com");
 
-    Factory02Ship pinkShip = new Factory02YellowShipFactory().orderShip("Yellowship", "lim@mail.com");
-    System.out.println(pinkShip);
+//    Factory02Ship pinkShip = new Factory02YellowShipFactory().orderShip("Yellowship", "lim@mail.com");
+//    System.out.println(pinkShip);
+//
+//    Factory02Ship blackShip = new Factory02BlackShipFactory().orderShip("Blackship", "hello@email.com");
+//    System.out.println(blackShip);
+  }
 
-    Factory02Ship blackShip = new Factory02BlackShipFactory().orderShip("Blackship", "hello@email.com");
-    System.out.println(blackShip);
+  // 팩토리 메소드 (Factory method) 패턴 복습
+  //구체적으로 어떤 것을 만들지는 서브 클래스가 정한다.
+  //- 팩토리 메소드 패턴을 적용했을 때의 장점은? 단점은?
+  //- “확장에 열려있고 변경에 닫혀있는 객체 지향 원칙”을 설명하세요.
+  //- 자바 8에 추가된 default 메소드에 대해 설명하세요.
+  private void print(Factory02ShipFactory shipFactory, String name, String email) {
+    System.out.println(shipFactory.orderShip(name, email));
   }
 }
