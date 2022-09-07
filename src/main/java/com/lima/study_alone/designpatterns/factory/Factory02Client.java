@@ -21,9 +21,14 @@ public class Factory02Client {
 
   // 팩토리 메소드 (Factory method) 패턴 복습
   //구체적으로 어떤 것을 만들지는 서브 클래스가 정한다.
-  //- 팩토리 메소드 패턴을 적용했을 때의 장점은? 단점은?
-  //- “확장에 열려있고 변경에 닫혀있는 객체 지향 원칙”을 설명하세요.
-  //- 자바 8에 추가된 default 메소드에 대해 설명하세요.
+  // - 팩토리 메소드 패턴을 적용했을 때의 장점은? 단점은?
+  // 장점 = 기존 코드를 건드리지 않고 새로운 인스턴스를 다른 방법으로 확장 가능하다
+  // = product 와 느슨한 결합 (loosely coupling)
+  // 단점 = 패턴 적용시 클래스가 늘어나는 단점이 있다.
+  // - “확장에 열려있고 변경에 닫혀있는 객체 지향 원칙”을 설명하세요. (ocp)
+  // = 변경에 닫혀있다 -> 기존 코드를 변경하지 않고 새롭게 확장 가능
+  // - 자바 8에 추가된 default 메소드에 대해 설명하세요.
+  // = 인터페이스에서는 추상메소드만 적용할수 있었는데 인터페이스에서 구현할 수 있는 키워드 이다.
   private void print(Factory02ShipFactory shipFactory, String name, String email) {
     System.out.println(shipFactory.orderShip(name, email));
   }
