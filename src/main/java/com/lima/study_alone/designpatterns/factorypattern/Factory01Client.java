@@ -1,4 +1,4 @@
-package com.lima.study_alone.designpatterns.factory;
+package com.lima.study_alone.designpatterns.factorypattern;
 
 /**
  * 팩토리 메소드 (Factory method) 패턴

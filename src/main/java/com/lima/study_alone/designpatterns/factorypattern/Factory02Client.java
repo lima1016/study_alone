@@ -1,4 +1,4 @@
-package com.lima.study_alone.designpatterns.factory;
+package com.lima.study_alone.designpatterns.factorypattern;
 
 /**
  * 팩토리 메소드 (Factory method) 패턴
@@ -32,4 +32,14 @@ public class Factory02Client {
   private void print(Factory02ShipFactory shipFactory, String name, String email) {
     System.out.println(shipFactory.orderShip(name, email));
   }
+  /*
+  팩토리 메소드 (Factory method) 패턴
+  실무에서는 어떻게 쓰이나?
+  • 단순한 팩토리 패턴
+  • 매개변수의 값에 따라 또는 메소드에 따라 각기 다른 인스턴스를 리턴하는 단순한 버전
+  의 팩토리 패턴
+  • java.lang.Calendar 또는 java.lang.NumberFormat
+  • 스프링 BeanFactory
+  • Object 타입의 Product를 만드는 BeanFacotry라는 Creator!
+   */
 }

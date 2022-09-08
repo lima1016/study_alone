@@ -1,4 +1,4 @@
-package com.lima.study_alone.designpatterns.factory;
+package com.lima.study_alone.designpatterns.factorypattern;
 
 public class Factory01ShipFactory {
   public static Factory01Ship orderShip(String name, String email) {

@@ -1,9 +1,9 @@
-package com.lima.study_alone.designpatterns.factory;
+package com.lima.study_alone.designpatterns.factorypattern;
 
 import lombok.Data;
 
 @Data
-public class Factory02Ship {
+public class Factory01Ship {
 
   private String name;
   private String logo;

@@ -1,4 +1,4 @@
-package com.lima.study_alone.designpatterns.singleton;
+package com.lima.study_alone.designpatterns.singletonpattern;
 
 /**
  * https://happy-coding-day.tistory.com/entry/%EC%8B%B1%EA%B8%80%ED%86%A4Singleton-%ED%8C%A8%ED%84%B4-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0

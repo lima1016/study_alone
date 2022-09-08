@@ -1,4 +1,4 @@
-package com.lima.study_alone.designpatterns.singleton;
+package com.lima.study_alone.designpatterns.singletonpattern;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;

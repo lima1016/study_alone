@@ -1,4 +1,4 @@
-package com.lima.study_alone.designpatterns.singleton;
+package com.lima.study_alone.designpatterns.singletonpattern;
 
 /**
  * 싱글톤 (Singleton) 패턴 구현 방법 3

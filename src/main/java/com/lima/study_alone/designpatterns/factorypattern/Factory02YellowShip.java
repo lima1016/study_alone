@@ -1,4 +1,4 @@
-package com.lima.study_alone.designpatterns.factory;
+package com.lima.study_alone.designpatterns.factorypattern;
 
 public class Factory02YellowShip extends Factory02Ship{
 
