@@ -17,4 +17,16 @@ package com.lima.study_alone.designpatterns.builderpattern;
    * • 구조가 복잡해 진다. (트레이드 오프)
  */
 public class Builder01 {
+  /*
+  빌더 (Builder) 패턴
+  실무에서 어떻게 쓰이나?
+  • 자바 8 Stream.Buidler API
+  • StringBuilder는 빌더 패턴일까?
+  • 롬복의 @Builder
+    • https://projectlombok.org/features/Builder
+  • 스프링
+    • UriComponentsBuilder
+    • MockMvcWebClientBuilder
+    • …Builder
+   */
 }
