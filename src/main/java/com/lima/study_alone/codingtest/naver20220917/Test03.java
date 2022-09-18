@@ -1,5 +1,6 @@
 package com.lima.study_alone.codingtest.naver20220917;
 
+//LIMA: 다시 해보기
 public class Test03 {
   public int solution(String L1, String L2) {
     char[] L1Ary = L1.toCharArray();
