@@ -1,6 +1,5 @@
 package com.lima.study_alone.algorithm.codingtest;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -14,7 +13,7 @@ import java.util.Scanner;
  * 첫 줄에 대문자는 소문자로, 소문자는 대문자로 변환된 문자열을 출력합니다.
  * StuDY ==> sTUdy
  */
-public class LetterCase20220921 {
+public class Inflearn20220921 {
   public String solution(String input) {
     // input을  input.toCharArray() 로 바꾼 후 Character.isLowerCase('') 하는 방법도 있음.
     String[] split = input.split("");
@@ -26,7 +25,7 @@ public class LetterCase20220921 {
     return result;
   }
   public static void main(String[] args){
-    LetterCase20220921 main = new LetterCase20220921();
+    Inflearn20220921 main = new Inflearn20220921();
     Scanner in =new Scanner(System.in);
     String input1 = in.next();
     System.out.println(main.solution(input1));

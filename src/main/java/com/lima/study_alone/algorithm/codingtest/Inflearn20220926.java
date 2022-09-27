@@ -1,4 +1,4 @@
 package com.lima.study_alone.algorithm.codingtest;
 
-public class Java20220926 {
+public class Inflearn20220926 {
 }

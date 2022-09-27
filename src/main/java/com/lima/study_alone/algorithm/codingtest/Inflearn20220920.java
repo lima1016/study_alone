@@ -18,7 +18,7 @@ import java.util.Scanner;
  * 예시 출력 1
  * 2
  */
-public class FindWord20220920 {
+public class Inflearn20220920 {
 
   public int solution(String input1, char input2) {
     int count = 0;
@@ -36,7 +36,7 @@ public class FindWord20220920 {
     String input1 = in.nextLine().toLowerCase();
     char input2 = in.next().toLowerCase().charAt(0);
 
-    FindWord20220920 find = new FindWord20220920();
+    Inflearn20220920 find = new Inflearn20220920();
     int solution = find.solution(input1, input2);
     System.out.println(solution);
   }

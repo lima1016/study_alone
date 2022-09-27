@@ -14,11 +14,26 @@ import java.util.Scanner;
  * it is time to study => study
  */
 public class Inflearn20220924 {
-  public static void main(String[] args){
-    Scanner in=new Scanner(System.in);
-    int input1 = in.nextInt();
-    int input2 = in.nextInt();
-    System.out.println(input1 + input2);
-    return ;
+  public String solution(String word) {
+    String result = "";
+    // 빈칸을 기준으로 단어 나누기
+    String[] strings = word.split(" ");
+    int tmp = 0;
+    // 나눈 단어들의 길이 체크 및 최대 값 구하기
+    for (String string : strings) {
+      if (string.length() >= tmp) {
+        tmp = string.length();
+        result = string;
+      }
+    }
+    return result;
+  }
+
+  public static void main(String[] args) {
+    Scanner in = new Scanner(System.in);
+    String input1 = in.nextLine();
+    Inflearn20220924 main = new Inflearn20220924();
+    String solution = main.solution(input1);
+    System.out.println(solution);
   }
 }
