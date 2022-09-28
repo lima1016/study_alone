@@ -19,7 +19,7 @@ public class Inflearn20220921 {
     String[] split = input.split("");
     String result = "";
     for (String s : split) {
-      result = result.concat(s.equals(s.toLowerCase()) ? s.toUpperCase() : s.toLowerCase());
+      result += s.equals(s.toLowerCase()) ? s.toUpperCase() : s.toLowerCase();
     }
 
     return result;
