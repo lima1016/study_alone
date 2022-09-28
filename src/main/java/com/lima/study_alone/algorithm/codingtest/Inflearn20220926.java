@@ -22,9 +22,7 @@ import java.util.Scanner;
  */
 public class Inflearn20220926 {
   public String solution(String word) {
-    StringBuilder str = new StringBuilder();
-    StringBuilder reverse = str.append(word).reverse();
-    return reverse.toString();
+    return new StringBuilder(word).reverse().toString();
   }
 
   public static void main(String[] args) {
