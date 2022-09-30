@@ -17,12 +17,17 @@ import java.util.Scanner;
 public class Inflearn20221001 {
 
   public String solution(String input) {
-    int half = input.length() / 2;
-    String back = input.substring(half);
-    String reverseBack = new StringBuilder(back).reverse().toString();
-    String front = input.length() % 2 == 0 ? input.substring(0, half) : input.substring(0, half+1);
-
-    if (reverseBack.equalsIgnoreCase(front)) {
+    // 첫번째 방법
+//    int half = input.length() / 2;
+//    String back = input.substring(half);
+//    String reverseBack = new StringBuilder(back).reverse().toString();
+//    String front = input.length() % 2 == 0 ? input.substring(0, half) : input.substring(0, half+1);
+//    if (reverseBack.equalsIgnoreCase(front)) {
+//      return "YES";
+//    }
+    // 두번째 방법 - 이거로... 하자...! ㅎㅎㅎ
+    String reverse = new StringBuilder(input).reverse().toString();
+    if (reverse.equalsIgnoreCase(input)) {
       return "YES";
     }
     return "NO";
