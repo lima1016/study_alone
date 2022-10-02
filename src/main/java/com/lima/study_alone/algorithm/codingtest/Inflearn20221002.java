@@ -1,5 +1,7 @@
 package com.lima.study_alone.algorithm.codingtest;
 
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -14,12 +16,32 @@ import java.util.Scanner;
  * 출력
  * 첫 번째 줄에 팰린드롬인지의 결과를 YES 또는 NO로 출력합니다.
  * found7, time: study; Yduts; emit, 7Dnuof => YES
+ * Tae,aba;e#%a*T => YES
+ * a sd fg #%hjkl; %#$@! lkj&*hgfd s ##a => YES
+ * found7, timk: study; Yduts; emit, 7Dnuof => NO
  */
 public class Inflearn20221002 {
-    // LIM: 특수기호 위치 생각해보자 결과 안나옴
+    // LIM: 문자만 뽑아서 reverse 해서 비교하면될듯
     public String solution(String input) {
-        String reversedInput = new StringBuilder(input).reverse().toString().toLowerCase();
-        String result = input.toLowerCase().equalsIgnoreCase(reversedInput) ? "YES" : "NO";
+        char[] chars = input.toCharArray();
+        char[] copyChars = Arrays.copyOf(chars, chars.length);
+        String letters = "";
+        // 문자만 뽑기
+        for (char aChar : chars) {
+            if (Character.isLetter(aChar)) {
+                letters += aChar;
+            }
+        }
+        // 카피해서 넣기
+        char[] lettersChar = new StringBuilder(letters).reverse().toString().toCharArray();
+        int index = 0;
+        for (int i = 0; i < copyChars.length; i++) {
+            if (Character.isLetter(copyChars[i])) {
+              copyChars[i] = lettersChar[index++];
+            }
+        }
+        // 두 배열 비교하기
+        String result = String.valueOf(chars).equalsIgnoreCase(String.valueOf(copyChars)) ? "YES" : "NO";
         return result;
     }
     public static void main(String[] args){
