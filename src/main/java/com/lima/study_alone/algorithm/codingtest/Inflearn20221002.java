@@ -21,33 +21,49 @@ import java.util.Scanner;
  * found7, timk: study; Yduts; emit, 7Dnuof => NO
  */
 public class Inflearn20221002 {
-    // LIM: 문자만 뽑아서 reverse 해서 비교하면될듯
-    public String solution(String input) {
-        char[] chars = input.toCharArray();
-        char[] copyChars = Arrays.copyOf(chars, chars.length);
-        String letters = "";
-        // 문자만 뽑기
-        for (char aChar : chars) {
-            if (Character.isLetter(aChar)) {
-                letters += aChar;
-            }
-        }
-        // 카피해서 넣기
-        char[] lettersChar = new StringBuilder(letters).reverse().toString().toCharArray();
-        int index = 0;
-        for (int i = 0; i < copyChars.length; i++) {
-            if (Character.isLetter(copyChars[i])) {
-              copyChars[i] = lettersChar[index++];
-            }
-        }
-        // 두 배열 비교하기
-        String result = String.valueOf(chars).equalsIgnoreCase(String.valueOf(copyChars)) ? "YES" : "NO";
-        return result;
+
+  //    public String solution(String input) {
+//        char[] chars = input.toCharArray();
+//        char[] copyChars = Arrays.copyOf(chars, chars.length);
+//        String letters = "";
+//        // 문자만 뽑기
+//        for (char aChar : chars) {
+//            if (Character.isLetter(aChar)) {
+//                letters += aChar;
+//            }
+//        }
+//        // 카피해서 넣기
+//        char[] lettersChar = new StringBuilder(letters).reverse().toString().toCharArray();
+//        int index = 0;
+//        for (int i = 0; i < copyChars.length; i++) {
+//            if (Character.isLetter(copyChars[i])) {
+//              copyChars[i] = lettersChar[index++];
+//            }
+//        }
+//        // 두 배열 비교하기
+//        String result = String.valueOf(chars).equalsIgnoreCase(String.valueOf(copyChars)) ? "YES" : "NO";
+//        return result;
+//    }
+// LIM: 문자만 뽑아서 reverse 해서 비교하면될듯
+  public String solution(String input) {
+    char[] chars = input.toCharArray();
+    String letters = "";
+    for (char aChar : chars) {
+      if (Character.isLetter(aChar)) {
+        letters += aChar;
+      }
     }
-    public static void main(String[] args){
-        Scanner in=new Scanner(System.in);
-        String input1 = in.nextLine();
-        Inflearn20221002 main = new Inflearn20221002();
-        System.out.println(main.solution(input1));
+    String reversedLetters = new StringBuilder(letters).reverse().toString();
+    if (letters.equalsIgnoreCase(reversedLetters)) {
+      return "YES";
     }
+    return "NO";
+  }
+
+  public static void main(String[] args) {
+    Scanner in = new Scanner(System.in);
+    String input1 = in.nextLine();
+    Inflearn20221002 main = new Inflearn20221002();
+    System.out.println(main.solution(input1));
+  }
 }
