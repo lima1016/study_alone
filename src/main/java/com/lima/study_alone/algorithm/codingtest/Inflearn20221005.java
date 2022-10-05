@@ -12,35 +12,49 @@ import java.util.Scanner;
  * 출력
  * 첫 번째 줄에 각 문자열 s의 각 문자가 문자 t와 떨어진 거리를 순서대로 출력한다.
  * teachermode e => 1 0 1 2 1 0 1 2 2 1 0
+ * fkdgkjdflkgjljslgjkfldjlkfdg f => 0 1 2 3 3 2 1 0 1 2 3 4 5 6 5 4 3 2 1 0 1 2 3 2 1 0 1 2
  */
 public class Inflearn20221005 {
-    public String solution(String word, String charWord) {
-        String result = "";
-        char[] chars = word.toCharArray();
-        int[] charsIndex = new int[chars.length];
-        int[] charWordIndex = {};
-        int count = 0;
-        // 먼저 문자 charWord의 인덱스들을 모아보자
-        for (int i = 0; i < chars.length; i++) {
-            charsIndex[i] = word.indexOf(chars[i]);
-            if (charsIndex[i] == charWord.charAt(0)) {
-                charWordIndex[count++] = word.indexOf(chars[i]);
-            }
+  public String solution(String word, char t) {
+    char[] chars = word.toCharArray();
+    int[] result = new int[word.length()];
+    int[] tIndex = new int[(int) word.chars().filter(c -> c == t).count()];
+    int min = word.length();
+    int count = 0;
+    // t의 인덱스만 골라 담기
+    for (int i = 0; i < chars.length; i++) {
+      if (chars[i] == t) {
+        tIndex[count++] = i;
+      }
+    }
+    // 골라 담은 인덱스와 모든 인덱스를 빼서 미니멈만 담기
+    for (int i = 0; i < chars.length; i++) {
+      if (chars[i] == t) {
+        result[i] = 0;
+      } else {
+        for (int l = 0; l < tIndex.length; l++) {
+          int findMin = Math.abs(i - tIndex[l]);
+          if (findMin <= min) {
+            min = findMin;
+            result[i] = min;
+          }
         }
-        // word의 index들을 정리해서
-        // charWord 인덱스들하고 다 빼놓은 다음에 마이너스가 아니면서 가장 작은거만 저장하는걸로
-        int test = word.indexOf(charWord, 2);
-        int indexOf = word.indexOf(charWord);
-        System.out.println("charWordIndex >>>> " + charWordIndex);
-        return result;
+        min = word.length();
+      }
     }
-
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        String word = in.nextLine();
-        String charWord = in.next();
-
-        Inflearn20221005 main = new Inflearn20221005();
-        System.out.println(main.solution(word, charWord));
+    String answer = "";
+    // 결과
+    for (int i : result) {
+      answer += String.valueOf(i);
     }
+    return answer.replace("", " ").trim();
+  }
+
+  public static void main(String[] args) {
+    Scanner in = new Scanner(System.in);
+    String word = in.nextLine();
+    Inflearn20221005 main = new Inflearn20221005();
+    String[] split = word.split(" ");
+    System.out.println(main.solution(split[0], split[1].charAt(0)));
+  }
 }
