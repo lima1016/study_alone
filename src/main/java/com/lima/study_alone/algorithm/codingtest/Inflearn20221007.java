@@ -30,4 +30,10 @@ package com.lima.study_alone.algorithm.codingtest;
  * #****###**#####**#####**##**  => COOL
  */
 public class Inflearn20221007 {
+  public void solution(String input) {
+
+  }
+  public static void main(String[] args) {
+
+  }
 }
