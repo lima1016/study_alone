@@ -1,5 +1,7 @@
 package com.lima.study_alone.algorithm.codingtest;
 
+import java.util.Scanner;
+
 /**
  * 설명
  * 현수는 영희에게 알파벳 대문자로 구성된 비밀편지를 매일 컴퓨터를 이용해 보냅니다.
@@ -12,7 +14,6 @@ package com.lima.study_alone.algorithm.codingtest;
  * 참고로 대문자들의 아스키 번호는 'A'는 65번, ‘B'는 66번, ’C'는 67번 등 차례대로 1씩 증가하여 ‘Z'는 90번입니다.
  * 현수가 4개의 문자를 다음과 같이 신호로 보냈다면
  * #****###**#####**####
- *
  * #**##**
  * 이 신호를 4개의 문자신호로 구분하면
  * #****## --> 'C'
@@ -30,10 +31,25 @@ package com.lima.study_alone.algorithm.codingtest;
  * #****###**#####**#####**##**  => COOL
  */
 public class Inflearn20221007 {
-  public void solution(String input) {
+  public String solution(String num, String input) {
+    int divide = input.length()/Integer.parseInt(num);
+    String result = "";
+    String replace = input.replace("#", "1").replace("*", "0");
+    int[] array = new int [Integer.parseInt(num)];
 
+    for (int i = 0; i < array.length;i ++) {
+      array[i] = Integer.parseInt(replace.substring(0, divide), 2);
+      replace = replace.substring(divide);
+      result += (char) array[i];
+    }
+    return result;
   }
-  public static void main(String[] args) {
 
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    String num = scanner.nextLine();
+    String input = scanner.nextLine();
+    Inflearn20221007 main = new Inflearn20221007();
+    System.out.println(main.solution(num, input));
   }
 }
