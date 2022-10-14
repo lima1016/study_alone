@@ -1,8 +1,5 @@
-package com.lima.study_alone.algorithm.codingtest;
+package com.lima.study_alone.algorithm.inflearn;
 
-import java.sql.SQLOutput;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
 
 /**

@@ -1,4 +1,4 @@
-package com.lima.study_alone.algorithm.codingtest;
+package com.lima.study_alone.algorithm.inflearn;
 
 import java.util.Scanner;
 
