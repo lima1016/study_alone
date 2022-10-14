@@ -1,5 +1,7 @@
 package com.lima.study_alone.algorithm.codingtest;
 
+import java.util.Scanner;
+
 /**
  * 2. 보이는 학생
  * 설명
@@ -13,4 +15,27 @@ package com.lima.study_alone.algorithm.codingtest;
  * 130 135 148 140 145 150 150 153 => 5
  */
 public class Inflearn20221013 {
+  public int solution(int[] students) {
+    int max = students[0];
+    int result = 1;
+    for (int i = 1; i < students.length; i++) {
+      if (students[i] > max) {
+        max = students[i];
+        result++;
+      }
+    }
+    return result;
+  }
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    int count = scanner.nextInt();
+    int[] students = new int[count];
+
+    for (int i = 0; i < students.length; i++) {
+      students[i] = scanner.nextInt();
+    }
+
+    Inflearn20221013 main = new Inflearn20221013();
+    System.out.println(main.solution(students));
+  }
 }

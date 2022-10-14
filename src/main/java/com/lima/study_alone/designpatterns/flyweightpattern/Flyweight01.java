@@ -1,4 +1,4 @@
-package com.lima.study_alone.designpatterns.flyweight;
+package com.lima.study_alone.designpatterns.flyweightpattern;
 
 /**
  * 플라이웨이트 (Flyweight) 패턴
