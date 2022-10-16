@@ -30,12 +30,42 @@ import java.util.Scanner;
  * D
  */
 public class Inflearn20221015 {
-  public String solution() {
-    return "";
+  public void solution(int count, int[] a, int[] b) {
+    for (int i = 0; i < count; i++) {
+      System.out.println(answer(a[i], b[i]));
+    }
   }
+
+  public String answer(int a, int b) {
+//    1:가위, 2:바위, 3:보
+    if (a == b) {
+      return "D";
+    } else {
+      switch (a) {
+        case 1:
+          return b == 2 ? "B" : "A";
+        case 2:
+          return b == 1 ? "A" : "B";
+        case 3:
+          return b == 1 ? "B" : "A";
+        default:
+          return "";
+      }
+    }
+  }
+
   public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
     Inflearn20221015 main = new Inflearn20221015();
-    System.out.println(main.solution());
+    Scanner scanner = new Scanner(System.in);
+    int count = scanner.nextInt();
+    int[] a = new int[count];
+    int[] b = new int[count];
+    for (int i = 0; i < count; i++) {
+      a[i] = scanner.nextInt();
+    }
+    for (int i = 0; i < count; i++) {
+      b[i] = scanner.nextInt();
+    }
+    main.solution(count, a, b);
   }
 }
