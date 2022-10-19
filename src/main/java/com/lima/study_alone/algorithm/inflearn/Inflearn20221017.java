@@ -1,5 +1,7 @@
 package com.lima.study_alone.algorithm.inflearn;
 
+import java.util.Scanner;
+
 /**
  * 4. 피보나치 수열
  * 설명
@@ -12,4 +14,23 @@ package com.lima.study_alone.algorithm.inflearn;
  * 10 => 1 1 2 3 5 8 13 21 34 55
  */
 public class Inflearn20221017 {
+  public void solution(int input) {
+    int[] nums = new int[input];
+    nums[0] = 1;
+    nums[1] = 1;
+
+    for (int i = 2; i < nums.length; i++) {
+      nums[i] = nums[i-1] + nums[i-2];
+    }
+    for (int i = 0; i < nums.length; i++) {
+      System.out.print(nums[i] + " ");
+    }
+  }
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    int input = scanner.nextInt();
+
+    Inflearn20221017 main = new Inflearn20221017();
+    main.solution(input);
+  }
 }
