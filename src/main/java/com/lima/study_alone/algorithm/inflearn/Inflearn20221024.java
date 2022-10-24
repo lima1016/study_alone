@@ -1,5 +1,10 @@
 package com.lima.study_alone.algorithm.inflearn;
 
+import org.apache.logging.log4j.util.StringBuilders;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  * 6. 뒤집은 소수
  * 설명
@@ -15,4 +20,27 @@ package com.lima.study_alone.algorithm.inflearn;
  * 32 55 62 20 250 370 200 30 100 => 23 2 73 2 3
  */
 public class Inflearn20221024 {
+  public String solution(int[] nums) {
+    String str = Arrays.toString(nums);
+    String substring = new StringBuffer(str).reverse().substring(1, str.length() - 1).replace(" ", "");
+    int[] resultNum = Arrays.stream(substring.split(",")).mapToInt(Integer::parseInt).toArray();
+    String result = "";
+    for (int i : resultNum) {
+      for (int l = 2; l < i; l++) {
+        if (i % l == 0) {
+        }
+      }
+    }
+    return result;
+  }
+  public static void main(String[] args) {
+    Inflearn20221024 main = new Inflearn20221024();
+    Scanner scanner = new Scanner(System.in);
+    int count = scanner.nextInt();
+    int[] nums = new int[count];
+    for (int i = 0; i < count; i++) {
+      nums[i] = scanner.nextInt();
+    }
+    main.solution(nums);
+  }
 }
