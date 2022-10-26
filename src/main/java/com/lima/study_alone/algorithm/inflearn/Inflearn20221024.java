@@ -1,6 +1,5 @@
 package com.lima.study_alone.algorithm.inflearn;
 
-import org.apache.logging.log4j.util.StringBuilders;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -25,13 +24,23 @@ public class Inflearn20221024 {
     String substring = new StringBuffer(str).reverse().substring(1, str.length() - 1).replace(" ", "");
     int[] resultNum = Arrays.stream(substring.split(",")).mapToInt(Integer::parseInt).toArray();
     String result = "";
-    for (int i : resultNum) {
-      for (int l = 2; l < i; l++) {
-        if (i % l == 0) {
+    for (int i = resultNum.length-1; i >= 0; i--) {
+      boolean isPrime = true;
+      for (int l = 2; l < resultNum[i]; l++) {
+        if (resultNum[i] == 2) {
+          result += resultNum[i] + " ";
+          break;
+        } else if (resultNum[i] % l == 0) {
+          isPrime = false;
+          break;
         }
       }
+      if (isPrime && resultNum[i] != 1) {
+        result += resultNum[i] + " ";
+      }
     }
-    return result;
+
+    return result.trim();
   }
   public static void main(String[] args) {
     Inflearn20221024 main = new Inflearn20221024();
@@ -41,6 +50,6 @@ public class Inflearn20221024 {
     for (int i = 0; i < count; i++) {
       nums[i] = scanner.nextInt();
     }
-    main.solution(nums);
+    System.out.println(main.solution(nums));
   }
 }
