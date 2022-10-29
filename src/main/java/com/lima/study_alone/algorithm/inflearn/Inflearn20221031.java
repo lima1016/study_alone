@@ -20,5 +20,5 @@ OX 문제는 맞거나 틀린 두 경우의 답을 가지는 문제를 말한다
 10
 1 0 1 1 1 0 0 1 1 0 => 10
  */
-public class Inflearn20221027 {
+public class Inflearn20221031 {
 }
