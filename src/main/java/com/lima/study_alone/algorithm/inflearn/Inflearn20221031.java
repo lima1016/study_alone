@@ -24,7 +24,8 @@ OX 문제는 맞거나 틀린 두 경우의 답을 가지는 문제를 말한다
  */
 public class Inflearn20221031 {
   public int solution(int[] nums) {
-    return 0;
+    int result = 0;
+    return result;
   }
   public static void main(String[] args) {
     Inflearn20221031 main = new Inflearn20221031();
