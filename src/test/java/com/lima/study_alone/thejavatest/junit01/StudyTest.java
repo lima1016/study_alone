@@ -15,7 +15,7 @@ class StudyTest {
 
   @Test
   // 이 테스트는 실행하고싶지 않다!
-//  @Disabled
+  @Disabled
   void create1() {
     System.out.println("create1");
   }
