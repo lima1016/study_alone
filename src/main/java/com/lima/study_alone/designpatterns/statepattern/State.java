@@ -10,7 +10,7 @@ package com.lima.study_alone.designpatterns.statepattern;
  * • 기존의 특정 상태에 따른 동작을 변경하지 않고 새로운 상태에 다른 동작을 추가할 수 있다.
  * • 코드 복잡도를 줄일 수 있다.
  * • 단점
- * • 복잡도가 증가한다. 
+ * • 복잡도가 증가한다.
  */
 public class State {
 }
