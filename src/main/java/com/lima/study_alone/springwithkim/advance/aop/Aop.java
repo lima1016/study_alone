@@ -55,4 +55,17 @@ package com.lima.study_alone.springwithkim.advance.aop;
  * CGLIB 프록시이다.
  */
 public class Aop {
+  // 메소드, 클래스 시간 측정 참고 블로그
+  // https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=idtong&logNo=130088240447
+  // https://velog.io/@dhk22/Spring-AOP-%EA%B0%84%EB%8B%A8%ED%95%9C-AOP-%EC%A0%81%EC%9A%A9-%EC%98%88%EC%A0%9C-%EB%A9%94%EC%84%9C%EB%93%9C-%EC%8B%A4%ED%96%89%EC%8B%9C%EA%B0%84-%EC%B8%A1%EC%A0%95
+
+  /**
+   * AOP 적용 전
+   * 클라이언트 orderService.orderItem() orderRepository.save()
+   * AOP 적용 후
+   * 클라이언트 [ doLog() doTransaction() ] orderService.orderItem()
+   * [ doLog() ] orderRepository.save()
+   * orderService 에는 doLog() , doTransaction() 두가지 어드바이스가 적용되어 있고,
+   * orderRepository 에는 doLog() 하나의 어드바이스만 적용된 것을 확인할 수 있다.
+   */
 }
