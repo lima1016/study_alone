@@ -48,7 +48,7 @@ public class AopTest {
   void success() {
     orderService.orderItem("itemA");
   }
-  
+
   @Test
   void exception() {
     // 예외가 터져야 성공함
