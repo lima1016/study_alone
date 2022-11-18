@@ -10,6 +10,13 @@ package com.lima.study_alone.designpatterns.behavioral_patterns.commandpattern;
  * • 커맨드 객체를 로깅, DB에 저장, 네트워크로 전송 하는 등 다양한 방법으로 활용할 수도 있다.
  * • 단점
  * • 코드가 복잡하고 클래스가 많아진다.
+ * • 자바
+ * • Runnable
+ * • 람다
+ * • 메소드 레퍼런스
+ * • 스프링
+ * • SimpleJdbcInsert
+ * • SimpleJdbcCall
  */
 public class Command {
 }

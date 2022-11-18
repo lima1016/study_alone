@@ -10,6 +10,12 @@ package com.lima.study_alone.designpatterns.behavioral_patterns.interpreterpatte
  * • 기존 코드를 변경하지 않고 새로운 Expression을 추가할 수 있다.
  * • 단점
  * • 복잡한 문법을 표현하려면 Expression과 Parser가 복잡해진다.
+ * • 자바
+ * • java.util.Enumeration과 java.util.Iterator
+ * • Java StAX (Streaming API for XML)의 Iterator 기반 API
+ * • XmlEventReader, XmlEventWriter
+ * • 스프링
+ * • CompositeIterator
  */
 public class Interpreter {
 }

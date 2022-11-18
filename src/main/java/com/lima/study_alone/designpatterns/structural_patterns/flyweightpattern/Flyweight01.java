@@ -8,6 +8,10 @@ package com.lima.study_alone.designpatterns.structural_patterns.flyweightpattern
  * • 애플리케이션에서 사용하는 메모리를 줄일 수 있다.
  * • 단점
  * • 코드의 복잡도가 증가한다.
+ * • 자바
+ * • Integer.valueOf(int)
+ * • 캐시를 제공한다.
+ * • https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#valueOf-int-
  */
 public class Flyweight01 {
 }

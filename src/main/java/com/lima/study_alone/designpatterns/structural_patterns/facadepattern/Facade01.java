@@ -8,6 +8,9 @@ package com.lima.study_alone.designpatterns.structural_patterns.facadepattern;
  * • 서브 시스템에 대한 의존성을 한곳으로 모을 수 있다.
  * • 단점
  * • 퍼사드 클래스가 서브 시스템에 대한 모든 의존성을 가지게 된다.
+ * • 스프링
+ * • Spring MVC
+ * • 스프링이 제공하는 대부분의 기술 독립적인 인터페이스와 그 구현체
  */
 public class Facade01 {
 }

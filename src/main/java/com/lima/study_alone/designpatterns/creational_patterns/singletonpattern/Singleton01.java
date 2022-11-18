@@ -21,6 +21,9 @@ package com.lima.study_alone.designpatterns.creational_patterns.singletonpattern
  * -> 멀티 스레드 환경에서는 오직 한 개의 인스턴스가 아니게 된다.
  * 새롭게 생성된 인스턴스에서도  instance가 null인지 여부를 판단하게 되는데,
  * 이때 새로운 스레드에는 생성된 instance 가 없기 때문에 한 개의 인스턴스를 보장할 수 없다.
+ * • 스프링에서 빈의 스코프 중에 하나로 싱글톤 스코프.
+ * • 자바 java.lang.Runtime
+ * • 다른 디자인 패턴(빌더, 퍼사드, 추상 팩토리 등) 구현체의 일부로 쓰이기도 한다.
  */
 public class Singleton01 {
 

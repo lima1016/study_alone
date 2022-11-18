@@ -10,6 +10,9 @@ package com.lima.study_alone.designpatterns.structural_patterns.compositepattern
    * • 클라이언트 코드를 변경하지 않고 새로운 엘리먼트 타입을 추가할 수 있다.
  * • 단점
   * • 트리를 만들어야 하기 때문에 (공통된 인터페이스를 정의해야 하기 때문에) 지나치게 일반화 해야 하는 경우도 생길 수 있다
+ * • 자바
+ * • Swing 라이브러리
+ * • JSF (JavaServer Faces) 라이브러리
  */
 public class Composite01 {
 }

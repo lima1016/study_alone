@@ -11,6 +11,14 @@ package com.lima.study_alone.designpatterns.behavioral_patterns.observerpattern;
  * • 단점
  * • 복잡도가 증가한다.
  * • 다수의 Observer 객체를 등록 이후 해지 않는다면 memory leak이 발생할 수도 있다
+ * • 자바
+ * • Observable과 Observer (자바 9부터 deprecated)
+ * • 자바 9 이후 부터는
+ * • PropertyChangeListener, PropertyChangeEvent
+ * • Flow API
+ * • SAX (Simple API for XML) 라이브러리
+ * • 스프링
+ * • ApplicationContext와 ApplicationEvent
  */
 public class Observer {
 }

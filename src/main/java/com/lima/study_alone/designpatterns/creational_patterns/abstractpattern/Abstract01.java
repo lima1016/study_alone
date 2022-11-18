@@ -8,6 +8,12 @@ import com.lima.study_alone.designpatterns.creational_patterns.factorypattern.Fa
  * 추상 팩토리 (Abstract factory) 패턴
  * 서로 관련있는 여러 객체를 만들어주는 인터페이스.
  * • 구체적으로 어떤 클래스의 인스턴스를(concrete product)를 사용하는지 감출 수 있다.
+ * • 자바 라이브러리
+ * • javax.xml.xpath.XPathFactory#newInstance()
+ * • javax.xml.transform.TransformerFactory#newInstance()
+ * • javax.xml.parsers.DocumentBuilderFactory#newInstance()
+ * • 스프링
+ * • FactoryBean과 그 구현
  */
 public class Abstract01 implements Factory02ShipFactory {
   @Override

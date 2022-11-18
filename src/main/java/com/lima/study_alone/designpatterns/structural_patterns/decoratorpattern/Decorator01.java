@@ -9,6 +9,12 @@ package com.lima.study_alone.designpatterns.structural_patterns.decoratorpattern
    * • 컴파일 타임이 아닌 런타임에 동적으로 기능을 변경할 수 있다.
  * • 단점
    * • 데코레이터를 조합하는 코드가 복잡할 수 있다.
+ * • 자바
+ * • InputStream, OutputStream, Reader, Writer의 생성자를 활용한 랩퍼
+ * • java.util.Collections가 제공하는 메소드들 활용한 랩퍼
+ * • javax.servlet.http.HttpServletRequest/ResponseWrapper
+ * • 스프링
+ * • ServerHttpRequestDecorator
  */
 public class Decorator01 {
 }

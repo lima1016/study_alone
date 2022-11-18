@@ -10,6 +10,10 @@ package com.lima.study_alone.designpatterns.behavioral_patterns.chainofresponsib
  * • 체인을 다양한 방법으로 구성할 수 있다.
  * • 단점
  * • 디버깅이 조금 어렵다.
+ * • 자바
+ * • 서블릿 필터
+ * • 스프링
+ * • 스프링 시큐리티 필터
  */
 public class ChainofResponsibility {
 }

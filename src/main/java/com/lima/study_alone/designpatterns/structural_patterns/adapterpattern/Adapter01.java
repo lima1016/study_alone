@@ -6,6 +6,14 @@ package com.lima.study_alone.designpatterns.structural_patterns.adapterpattern;
  * 어댑터 (Adapter) 패턴
  * 기존 코드를 클라이언트가 사용하는 인터페이스의 구현체로 바꿔주는 패턴
  * • 클라이언트가 사용하는 인터페이스를 따르지 않는 기존 코드를 재사용할 수 있게 해준다.
+ * • 자바
+ * • java.util.Arrays#asList(T…)
+ * • java.util.Collections#list(Enumeration), java.util.Collections#enumeration()
+ * • java.io.InputStreamReader(InputStream)
+ * • java.io.OutputStreamWriter(OutputStream)
+ * • 스프링
+ * • HandlerAdpter: 우리가 작성하는 다양한 형태의 핸들러 코드를 스프링 MVC가 실행할 수 있
+ * 는 형태로 변환해주는 어댑터용 인터페이스
  */
 public class Adapter01 {
   /*

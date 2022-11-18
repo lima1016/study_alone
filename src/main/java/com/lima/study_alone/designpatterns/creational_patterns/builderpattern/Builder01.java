@@ -15,6 +15,14 @@ package com.lima.study_alone.designpatterns.creational_patterns.builderpattern;
  * • 단점
    * • 원하는 객체를 만들려면 빌더부터 만들어야 한다.
    * • 구조가 복잡해 진다. (트레이드 오프)
+ * • 자바 8 Stream.Buidler API
+ * • StringBuilder는 빌더 패턴일까?
+ * • 롬복의 @Builder
+ * • https://projectlombok.org/features/Builder
+ * • 스프링
+ * • UriComponentsBuilder
+ * • MockMvcWebClientBuilder
+ * • …Builder
  */
 public class Builder01 {
   /*

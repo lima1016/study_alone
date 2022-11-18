@@ -1,4 +1,4 @@
-package com.lima.study_alone.designpatterns.behavioral_patterns;
+package com.lima.study_alone.designpatterns.behavioral_patterns.strategypattern;
 
 /**
  * 전략 (Strategy) 패턴
@@ -11,6 +11,11 @@ package com.lima.study_alone.designpatterns.behavioral_patterns;
  * • 단점
  * • 복잡도가 증가한다.
  * • 클라이언트 코드가 구체적인 전략을 알아야 한다.
+ * • 자바
+ * • Comparator
+ * • 스프링
+ * • ApplicationContext
+ * • PlatformTransactionManager
  */
 public class Strategy {
 }

@@ -11,6 +11,11 @@ import java.util.Iterator;
  * • 일관된 인터페이스를 사용해 여러 형태의 집합 구조를 순회할 수 있다.
  * • 단점
  * • 클래스가 늘어나고 복잡도가 증가한다.
+ * • 자바
+ * • 자바 컴파일러
+ * • 정규 표현식
+ * • 스프링
+ * • SpEL (스프링 Expression Language)
  */
 public class Interator {
   public static void main(String[] args) {
