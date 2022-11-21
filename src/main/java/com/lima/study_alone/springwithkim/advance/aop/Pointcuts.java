@@ -8,15 +8,15 @@ import org.aspectj.lang.annotation.Pointcut;
  * 호출할 때는 포인트컷의 접근 제어자를 public 으로 열어두어야 한다.
  */
 public class Pointcuts {
-  //hello.springaop.app 패키지와 하위 패키지
+  // com.lima.study_alone.springwithkim.advance.aop.order 패키지와 하위 패키지
   @Pointcut("execution(* com.lima.study_alone.springwithkim.advance.aop.order..*(..))")
   public void allOrder(){}
 
-  //타입 패턴이 *Service
+  // 타입 패턴이 *Service
   @Pointcut("execution(* *..*Service.*(..))")
   public void allService(){}
 
-  //allOrder && allService
+  // allOrder && allService
   @Pointcut("allOrder() && allService()")
   public void orderAndService(){}
 }
