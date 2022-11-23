@@ -42,7 +42,6 @@ public class TemplateMethodTest {
   void templateMethodV1() {
     AbstractTemplate template1 = new SubClassLogic1();
     template1.execute();
-
     AbstractTemplate template2 = new SubClassLogic2();
     template2.execute();
   }
