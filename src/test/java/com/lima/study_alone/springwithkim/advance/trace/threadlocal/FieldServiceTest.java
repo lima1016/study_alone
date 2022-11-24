@@ -53,7 +53,6 @@ public class FieldServiceTest {
     threadA.setName("thread-A");
     Thread threadB = new Thread(userB);
     threadB.setName("thread-B");
-
     threadA.start();
 //    sleep(2000); // 동시성 문제 X
     sleep(100); // 동시성 문제 O
