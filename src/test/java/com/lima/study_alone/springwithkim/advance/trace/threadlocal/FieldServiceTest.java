@@ -60,7 +60,6 @@ public class FieldServiceTest {
     sleep(2000); // 메인 쓰레드 종료 대기
 //    sleep(3000); // 메인 쓰레드 종료 대기
     log.info("main exit");
-
     /*
     동시성 문제
     결과적으로 Thread-A 입장에서는 저장한 데이터와 조회한 데이터가 다른 문제가 발생한다. 이처럼 여러
