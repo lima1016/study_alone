@@ -16,3 +16,4 @@
 - JPA
 - Effective Java
 - Rx Java
+- Spring boot 개인 프로젝트 예정
