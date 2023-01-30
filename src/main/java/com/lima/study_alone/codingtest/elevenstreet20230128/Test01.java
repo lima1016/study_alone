@@ -13,8 +13,7 @@ public class Test01 {
       Nsum += Integer.parseInt(split[i]);
     }
     // 입력 받은 값 보다 크고 자리수를 더했을때 Nsum과 같은 숫자 찾기
-    boolean run = true;
-    while (run) {
+    while (true) {
       result++;
       String[] str = String.valueOf(result).split("");
       findSum = 0;
@@ -22,14 +21,13 @@ public class Test01 {
         findSum += Integer.parseInt(str[i]);
       }
       if (findSum == Nsum) {
-        run = false;
+        return result;
       }
     }
-    return result;
   }
 
   public static void main(String[] args) {
-    int num = 1000;
+    int num = 734;
     Test01.solution(num);
   }
 }
