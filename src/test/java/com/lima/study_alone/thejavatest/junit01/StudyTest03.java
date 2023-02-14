@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class StudyTest03 {
 
   @Test
-  @DisplayName("ヽ（≧□≦）ノ")
+  @DisplayName("😊😊😊")
   void create_new_study() {
     Study study02 = new Study();
     assertNotNull(study02);
