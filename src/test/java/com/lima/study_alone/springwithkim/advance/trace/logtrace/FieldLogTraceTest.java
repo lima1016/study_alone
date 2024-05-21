@@ -1,9 +1,8 @@
 package com.lima.study_alone.springwithkim.advance.trace.logtrace;
 
-import com.lima.study_alone.springwithkim.advance.trace.TraceStatus;
+import com.lima.study_alone.inflearn.springwithkim.advance.trace.TraceStatus;
+import com.lima.study_alone.inflearn.springwithkim.advance.trace.logtrace.FieldLogTrace;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FieldLogTraceTest {
 

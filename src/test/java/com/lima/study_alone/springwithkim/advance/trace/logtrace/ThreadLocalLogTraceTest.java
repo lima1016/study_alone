@@ -1,6 +1,7 @@
 package com.lima.study_alone.springwithkim.advance.trace.logtrace;
 
-import com.lima.study_alone.springwithkim.advance.trace.TraceStatus;
+import com.lima.study_alone.inflearn.springwithkim.advance.trace.TraceStatus;
+import com.lima.study_alone.inflearn.springwithkim.advance.trace.logtrace.ThreadLocalLogTrace;
 import org.junit.jupiter.api.Test;
 
 class ThreadLocalLogTraceTest {

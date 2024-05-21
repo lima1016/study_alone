@@ -1,7 +1,8 @@
 package com.lima.study_alone.springwithkim.advance.aop;
 
-import com.lima.study_alone.springwithkim.advance.aop.order.OrderRepository;
-import com.lima.study_alone.springwithkim.advance.aop.order.OrderService;
+import com.lima.study_alone.inflearn.springwithkim.advance.aop.AspectV6Advice;
+import com.lima.study_alone.inflearn.springwithkim.advance.aop.order.OrderRepository;
+import com.lima.study_alone.inflearn.springwithkim.advance.aop.order.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.aop.support.AopUtils;

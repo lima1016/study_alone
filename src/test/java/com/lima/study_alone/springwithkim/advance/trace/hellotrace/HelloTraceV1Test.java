@@ -1,9 +1,8 @@
 package com.lima.study_alone.springwithkim.advance.trace.hellotrace;
 
-import com.lima.study_alone.springwithkim.advance.trace.TraceStatus;
+import com.lima.study_alone.inflearn.springwithkim.advance.trace.TraceStatus;
+import com.lima.study_alone.inflearn.springwithkim.advance.trace.hellotrace.HelloTraceV1;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class HelloTraceV1Test {
 
