@@ -1,4 +1,4 @@
-package com.lima.study_alone.codingtest.elevenstreet20230128;
+package com.lima.study_alone.codingtest.elevenstreet_20230128;
 
 public class Test01 {
 

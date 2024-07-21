@@ -1,4 +1,4 @@
-package com.lima.study_alone.codingtest.naver20220917;
+package com.lima.study_alone.codingtest.naver_20220917;
 
 import java.util.*;
 import java.util.stream.IntStream;

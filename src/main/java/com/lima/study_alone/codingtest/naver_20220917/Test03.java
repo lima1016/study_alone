@@ -1,4 +1,4 @@
-package com.lima.study_alone.codingtest.naver20220917;
+package com.lima.study_alone.codingtest.naver_20220917;
 
 //LIMA: 다시 해보기
 public class Test03 {
