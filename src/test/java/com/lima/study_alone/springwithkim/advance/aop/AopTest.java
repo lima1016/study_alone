@@ -1,8 +1,8 @@
 package com.lima.study_alone.springwithkim.advance.aop;
 
 import com.lima.study_alone.inflearn.springwithkim.advance.aop.AspectV6Advice;
-import com.lima.study_alone.inflearn.springwithkim.advance.aop.order.OrderRepository;
-import com.lima.study_alone.inflearn.springwithkim.advance.aop.order.OrderService;
+import com.lima.study_alone.inflearn.springwithkim.advance.aop.order.OrderRepositoryKim;
+import com.lima.study_alone.inflearn.springwithkim.advance.aop.order.OrderServiceWithKim;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.aop.support.AopUtils;
@@ -32,9 +32,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @SpringBootTest
 public class AopTest {
   @Autowired
-  OrderService orderService;
+  OrderServiceWithKim orderServiceWithKim;
   @Autowired
-  OrderRepository orderRepository;
+  OrderRepositoryKim orderRepositoryKim;
 
   /**
    * AopUtils.isAopProxy(...) 을 통해서 AOP 프록시가 적용 되었는지 확인할 수 있다. 현재 AOP 관련
@@ -42,17 +42,17 @@ public class AopTest {
    */
   @Test
   void aopInfo() {
-    log.info("isAopProxy, orderService={}", AopUtils.isAopProxy(orderService));
-    log.info("isAopProxy, orderRepository={}", AopUtils.isAopProxy(orderRepository));
+    log.info("isAopProxy, orderService={}", AopUtils.isAopProxy(orderServiceWithKim));
+    log.info("isAopProxy, orderRepository={}", AopUtils.isAopProxy(orderRepositoryKim));
   }
   @Test
   void success() {
-    orderService.orderItem("itemA");
+    orderServiceWithKim.orderItem("itemA");
   }
 
   @Test
   void exception() {
     // 예외가 터져야 성공함
-    assertThatThrownBy(() -> orderService.orderItem("ex")).isInstanceOf(IllegalStateException.class);
+    assertThatThrownBy(() -> orderServiceWithKim.orderItem("ex")).isInstanceOf(IllegalStateException.class);
   }
 }
