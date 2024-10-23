@@ -22,7 +22,7 @@ import org.springframework.util.StopWatch;
 public class AspectV6Advice {
 
   // com.lima.study_alone.springwithkim.advance.aop.order 패키지와 하위 패키지ㅣ 이면서 클래스 이름 패턴이 *Service
-  @Around("com.lima.study_alone.springwithkim.advance.aop.Pointcuts.orderAndService()")
+  @Around("com.lima.study_alone.inflearn.springwithkim.advance.aop.Pointcuts.orderAndService()")
   public Object doTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
     try {
       // @Before
@@ -50,7 +50,7 @@ public class AspectV6Advice {
    * 사용하지 않는다. 메서드 종료시 자동으로 다음 타켓이 호출된다. 물론 예외가 발생하면 다음 코드가
    * 호출되지는 않는다
    */
-  @Before("com.lima.study_alone.springwithkim.advance.aop.Pointcuts.orderAndService()")
+  @Before("com.lima.study_alone.inflearn.springwithkim.advance.aop.Pointcuts.orderAndService()")
   public void doBefore(JoinPoint joinPoint) {
     log.info("[before] {}", joinPoint.getSignature());
   }
@@ -64,7 +64,7 @@ public class AspectV6Advice {
    * @Around 와 다르게 반환되는 객체를 변경할 수는 없다. 반환 객체를 변경하려면 @Around 를 사용해야
    * 한다. 참고로 반환 객체를 조작할 수 는 있다.
    */
-  @AfterReturning(value = "com.lima.study_alone.springwithkim.advance.aop.Pointcuts.orderAndService()", returning = "result")
+  @AfterReturning(value = "com.lima.study_alone.inflearn.springwithkim.advance.aop.Pointcuts.orderAndService()", returning = "result")
   public void doReturn(JoinPoint joinPoint, Object result) {
     log.info("[return] {} return={}", joinPoint.getSignature(), result);
   }
@@ -76,7 +76,7 @@ public class AspectV6Advice {
    * throwing 절에 지정된 타입과 맞은 예외를 대상으로 실행한다. (부모 타입을 지정하면 모든 자식 타입은
    * 인정된다.)
    */
-  @AfterThrowing(value = "com.lima.study_alone.springwithkim.advance.aop.Pointcuts.orderAndService()", throwing = "ex")
+  @AfterThrowing(value = "com.lima.study_alone.inflearn.springwithkim.advance.aop.Pointcuts.orderAndService()", throwing = "ex")
   public void doThrowing(JoinPoint joinPoint, Exception ex) {
     log.info("[ex] {} message={}", joinPoint.getSignature(), ex.getMessage());
   }
@@ -87,7 +87,7 @@ public class AspectV6Advice {
    * 정상 및 예외 반환 조건을 모두 처리한다.
    * 일반적으로 리소스를 해제하는 데 사용한다.
    */
-  @After(value = "com.lima.study_alone.springwithkim.advance.aop.Pointcuts.orderAndService()")
+  @After(value = "com.lima.study_alone.inflearn.springwithkim.advance.aop.Pointcuts.orderAndService()")
   public void doAfter(JoinPoint joinPoint) {
     log.info("[after] {}", joinPoint.getSignature());
   }
