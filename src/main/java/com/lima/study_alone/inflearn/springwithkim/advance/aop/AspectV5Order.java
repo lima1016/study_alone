@@ -27,7 +27,7 @@ public class AspectV5Order {
   @Aspect
   @Order(2)
   public static class LogAspect {
-    @Around("com.lima.study_alone.springwithkim.advance.aop.Pointcuts.allOrder()")
+    @Around("com.lima.study_alone.inflearn.springwithkim.advance.aop.Pointcuts.allOrder()")
     public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable {
       log.info("[log] {}", joinPoint.getSignature()); //join point 시그니처
       return joinPoint.proceed();
@@ -38,7 +38,7 @@ public class AspectV5Order {
   @Order(1)
   public static class TxAspect {
     // com.lima.study_alone.springwithkim.advance.aop.order 패키지와 하위 패키지ㅣ 이면서 클래스 이름 패턴이 *Service
-    @Around("com.lima.study_alone.springwithkim.advance.aop.Pointcuts.orderAndService()")
+    @Around("com.lima.study_alone.inflearn.springwithkim.advance.aop.Pointcuts.orderAndService()")
     public Object doTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
       try {
         log.info("[트랜잭션 시작] {}", joinPoint.getSignature());
