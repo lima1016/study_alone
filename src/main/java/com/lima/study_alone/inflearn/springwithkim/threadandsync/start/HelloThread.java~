@@ -1,0 +1,10 @@
+package com.lima.study_alone.inflearn.springwithkim.threadandsync.start;
+
+public class HelloThread extends Thread{
+
+  @Override
+  public void run() {
+    System.out.println(Thread.currentThread().getName() + " : run()");
+  }
+
+}
