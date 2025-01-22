@@ -1,11 +1,5 @@
 package com.lima.study_alone.codingtest.nexton_20250112;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class Solution1 {
 
   /*
