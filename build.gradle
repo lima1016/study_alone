@@ -24,6 +24,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // Spark 2.4.6 (SQL 모듈 포함)
+    implementation 'org.apache.spark:spark-sql_2.11:2.4.6'
     //테스트에서 lombok 사용
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
