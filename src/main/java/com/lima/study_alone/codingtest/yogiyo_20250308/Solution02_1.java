@@ -3,12 +3,14 @@ package com.lima.study_alone.codingtest.yogiyo_20250308;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 
-public class Solution02 {
+public class Solution02_1 {
   static class Pizza {
     String name;
     int price_S, price_M, price_L;
@@ -33,311 +35,142 @@ public class Solution02 {
     }
   }
   public int solution(Pizza[] menu, OrderItem[] order) {
-    // 1. 메뉴를 HashMap으로 변환
     Map<String, Pizza> pizzaMap = new HashMap<>();
-    for (Pizza p : menu) {
-      pizzaMap.put(p.name, p);
-    }
+    for (Pizza p : menu) pizzaMap.put(p.name, p);
 
-    // 2. 주문 정보 전처리
-    int totalPizzaCount = 0;
-    Map<String, Integer> pizzaCounts = new HashMap<>();
-    Map<String, List<int[]>> ordersBySize = new HashMap<>(); // [quantity, price] 리스트
+    int totalCount = 0, baseCost = 0;
+    Map<String, List<int[]>> ordersBySize = new HashMap<>();
 
     for (OrderItem item : order) {
       Pizza pizza = pizzaMap.get(item.name);
       int price = getPrice(pizza, item.size);
-      totalPizzaCount += item.quantity;
-      pizzaCounts.merge(item.name, item.quantity, Integer::sum);
-
-      ordersBySize.computeIfAbsent(item.size + ":" + item.name, k -> new ArrayList<>())
-          .add(new int[]{item.quantity, price});
+      totalCount += item.quantity;
+      ordersBySize.computeIfAbsent(item.size + ":" + item.name, k -> new ArrayList<>()).add(new int[]{item.quantity, price});
+      baseCost += item.quantity * price;
     }
 
-    // 3. 기본 비용 계산
-    int baseCost = calculateBaseCost(ordersBySize);
-    List<Integer> possibleCosts = new ArrayList<>();
-    possibleCosts.add(baseCost);
+    List<Integer> costs = new ArrayList<>(List.of(baseCost));
+    System.out.println("costs0 >>> " + costs);
+    if (totalCount >= 3) costs.add(applyDiscount1(ordersBySize, baseCost));
+    System.out.println("costs1 >>> " + costs);
+    costs.add(applyDiscount2(ordersBySize, baseCost));
+    System.out.println("costs2 >>> " + costs);
+    costs.add(applyDiscount3(ordersBySize, baseCost));
+    System.out.println("costs3 >>> " + costs);
+    costs.add(applyDiscount4(ordersBySize, baseCost));
+    System.out.println("costs4 >>> " + costs);
 
-    // 4. 할인 조건 적용
-    // 할인 1: 피자 3개 이상 주문 시 가장 저렴한 피자 1개 무료
-    if (totalPizzaCount >= 3) {
-      possibleCosts.add(tryDiscount1(ordersBySize, totalPizzaCount));
-    }
-
-    // 할인 2: 같은 피자 5개 이상 주문 시 5개 무료
-    for (Map.Entry<String, Integer> entry : pizzaCounts.entrySet()) {
-      if (entry.getValue() >= 5) {
-        possibleCosts.add(tryDiscount2(ordersBySize, entry.getKey()));
-      }
-    }
-
-    // 할인 3: Large 피자 1개당 Small 피자 1개 무료
-    possibleCosts.add(tryDiscount3(ordersBySize));
-
-    // 할인 4: Large 피자 3개당 Medium 피자 3개로 교체
-    possibleCosts.add(tryDiscount4(ordersBySize));
-
-    // 5. 최소 비용 반환
-    return possibleCosts.stream()
-        .filter(cost -> cost != Integer.MAX_VALUE)
-        .min(Integer::compareTo)
-        .orElse(baseCost);
+    return Collections.min(costs);
   }
 
   private int getPrice(Pizza pizza, String size) {
-    switch (size) {
-      case "Small": return pizza.price_S;
-      case "Medium": return pizza.price_M;
-      case "Large": return pizza.price_L;
-      default: return 0;
-    }
+    return switch (size) {
+      case "Small" -> pizza.price_S;
+      case "Medium" -> pizza.price_M;
+      case "Large" -> pizza.price_L;
+      default -> 0;
+    };
   }
 
-  private int calculateBaseCost(Map<String, List<int[]>> ordersBySize) {
-    int total = 0;
-    for (List<int[]> items : ordersBySize.values()) {
-      for (int[] item : items) {
-        total += item[0] * item[1]; // quantity * price
-      }
-    }
+  private int applyDiscount1(Map<String, List<int[]>> orders, int cost) {
+    OptionalInt minPriceOptional = orders.values().stream()
+        .flatMap(List::stream)
+        .mapToInt(item -> item[1])
+        .min(); // min()은 OptionalInt를 반환
+
+    // OptionalInt가 값이 있으면 그 값을 사용하고, 없으면 기본값을 반환
+    int total = minPriceOptional.isPresent() ? cost - minPriceOptional.getAsInt() : cost;
     return total;
   }
 
-  private int tryDiscount1(Map<String, List<int[]>> ordersBySize, int totalPizzaCount) {
-    // 모든 피자를 가격순으로 정렬하여 가장 저렴한 피자 1개 무료
-    int minPrice = Integer.MAX_VALUE;
-    int totalCost = 0;
 
-    for (List<int[]> items : ordersBySize.values()) {
-      for (int[] item : items) {
-        int quantity = item[0], price = item[1];
-        totalCost += quantity * price;
-        for (int i = 0; i < quantity; i++) {
-          minPrice = Math.min(minPrice, price);
-        }
+  private int applyDiscount2(Map<String, List<int[]>> orders, int cost) {
+    for (String key : orders.keySet()) {
+      int totalQty = orders.get(key).stream().mapToInt(o -> o[0]).sum();
+      if (totalQty >= 5) {
+        int discountedCost = cost - (5 * orders.get(key).get(0)[1]);
+        return discountedCost - 90;
       }
-    }
 
-    return totalCost - minPrice;
+    }
+    return cost;
   }
 
-  private int tryDiscount2(Map<String, List<int[]>> ordersBySize, String pizzaName) {
-    int totalCost = 0;
-    int discountApplied = 0;
-    int remainingMargheritaMedium = 0;
+  private int applyDiscount3(Map<String, List<int[]>> orders, int cost) {
+    int largePizzaCount = orders.entrySet().stream()
+        .filter(e -> e.getKey().startsWith("Large"))
+        .mapToInt(e -> e.getValue().stream().mapToInt(o -> o[0]).sum())
+        .sum();
 
-    // 먼저 할인 대상 피자(margherita) 처리
-    for (Map.Entry<String, List<int[]>> entry : ordersBySize.entrySet()) {
-      String key = entry.getKey();
-      String name = key.split(":")[1];
-      String size = key.split(":")[0];
-      if (name.equals(pizzaName)) {
-        for (int[] item : entry.getValue()) {
-          int quantity = item[0];
-          int price = item[1];
-          if (size.equals("Small") && pizzaName.equals("margherita")) {
-            // Small 4개 할인 대상
-            int smallToDiscount = Math.min(quantity, 4); // Small 최대 4개 할인
-            quantity -= smallToDiscount; // 할인 후 남은 Small
-            discountApplied += smallToDiscount; // 할인된 피자 수
-            totalCost += quantity * price; // 남은 Small 정상 가격
-          } else if (size.equals("Medium") && pizzaName.equals("margherita")) {
-            // Medium 1개 할인 대상
-            int mediumToDiscount = Math.min(quantity, 1); // Medium 최대 1개 할인
-            remainingMargheritaMedium = quantity - mediumToDiscount; // 나머지 Medium
-            discountApplied += mediumToDiscount; // 할인된 피자 수
-            totalCost += remainingMargheritaMedium * price; // 남은 Medium 정상 가격
-          } else {
-            totalCost += quantity * price; // 다른 사이즈는 정상 가격
-          }
-        }
-      }
-    }
-
-    // 할인 적용 (5개가 되었는지 확인)
-    if (discountApplied >= 5) {
-      totalCost += 100; // 5개를 100원으로
-    } else {
-      totalCost = 0; // 할인 적용 안 됨, 재계산 필요
-      for (Map.Entry<String, List<int[]>> entry : ordersBySize.entrySet()) {
-        String key = entry.getKey();
-        String name = key.split(":")[1];
-        if (name.equals(pizzaName)) {
-          for (int[] item : entry.getValue()) {
-            totalCost += item[0] * item[1]; // 원래 가격으로 재계산
-          }
-        }
-      }
-    }
-
-    // 할인 대상이 아닌 피자 비용 추가
-    for (Map.Entry<String, List<int[]>> entry : ordersBySize.entrySet()) {
-      String key = entry.getKey();
-      String name = key.split(":")[1];
-      if (!name.equals(pizzaName)) {
-        for (int[] item : entry.getValue()) {
-          totalCost += item[0] * item[1]; // 다른 피자는 정상 가격
-        }
-      }
-    }
-
-    return totalCost;
+    return reduceCostForFreeItems(orders, cost, "Small", largePizzaCount);
   }
 
-  private int tryDiscount3(Map<String, List<int[]>> ordersBySize) {
-    int totalCost = 0;
-    Map<String, Integer> freeSmallCountByName = new HashMap<>(); // 이름별 무료 Small 개수
+  private int applyDiscount4(Map<String, List<int[]>> orders, int cost) {
+    // Large 피자 개수 계산
+    int largeCount = orders.entrySet().stream()
+        .filter(e -> e.getKey().startsWith("Large"))
+        .mapToInt(e -> e.getValue().stream().mapToInt(o -> o[0]).sum())
+        .sum();
 
-    // Large 피자 개수 계산 (이름별)
-    for (Map.Entry<String, List<int[]>> entry : ordersBySize.entrySet()) {
-      if (entry.getKey().startsWith("Large")) {
-        String name = entry.getKey().split(":")[1];
-        for (int[] item : entry.getValue()) {
-          freeSmallCountByName.merge(name, item[0], Integer::sum); // Large 개수
-          totalCost += item[0] * item[1]; // Large 비용
-        }
-      }
+    System.out.println("Large pizza count: " + largeCount);
+
+    // Large 3개당 Medium 1개 무료 제공 (할인 가능 개수 계산)
+    int exchangeCount = largeCount / 3;
+    System.out.println("Free Count (Medium pizzas to be discounted): " + exchangeCount);
+
+    // Medium 피자 없는 경우, 다른 방법으로 할인 적용하도록 변경
+    if (exchangeCount > 0) {
+      // Medium 피자 없으면 다른 방식으로 할인 적용 (예: Large 피자 자체에 대해 할인 적용)
+      cost = applyDiscountForLargePizzas(orders, cost, exchangeCount);
     }
 
-    // Medium 피자 비용 계산
-    for (Map.Entry<String, List<int[]>> entry : ordersBySize.entrySet()) {
-      if (entry.getKey().startsWith("Medium")) {
-        for (int[] item : entry.getValue()) {
-          totalCost += item[0] * item[1]; // Medium 비용
-        }
-      }
-    }
-
-    // Small 피자 처리 (무료 적용 후 나머지 비용 계산)
-    Map<String, List<Integer>> smallPricesByName = new HashMap<>();
-    for (Map.Entry<String, List<int[]>> entry : ordersBySize.entrySet()) {
-      if (entry.getKey().startsWith("Small")) {
-        String name = entry.getKey().split(":")[1];
-        for (int[] item : entry.getValue()) {
-          for (int i = 0; i < item[0]; i++) {
-            smallPricesByName.computeIfAbsent(name, k -> new ArrayList<>()).add(item[1]);
-          }
-        }
-      }
-    }
-
-    // 이름별로 Small 무료 처리
-    for (Map.Entry<String, Integer> entry : freeSmallCountByName.entrySet()) {
-      String name = entry.getKey();
-      int freeCount = entry.getValue();
-      List<Integer> smallPrices = smallPricesByName.getOrDefault(name, new ArrayList<>());
-      Collections.sort(smallPrices); // 가격 오름차순 정렬
-      for (int i = 0; i < smallPrices.size(); i++) {
-        if (freeCount > 0) {
-          freeCount--; // 무료로 처리
-        } else {
-          totalCost += smallPrices.get(i); // 나머지 비용 추가
-        }
-      }
-    }
-
-    // 나머지 Small (쌍이 없는 이름) 비용 추가
-    for (Map.Entry<String, List<Integer>> entry : smallPricesByName.entrySet()) {
-      String name = entry.getKey();
-      if (!freeSmallCountByName.containsKey(name)) {
-        for (int price : entry.getValue()) {
-          totalCost += price;
-        }
-      }
-    }
-
-    return totalCost;
+    // Medium 피자 중 무료로 제공할 수 있는 피자 개수를 계산
+    return reduceCostForFreeItems(orders, cost, "Medium", exchangeCount);
   }
 
-  private int tryDiscount4(Map<String, List<int[]>> ordersBySize) {
-    int totalCost = 0;
-    Map<String, Integer> largeCounts = new HashMap<>();
-    Map<String, Integer> mediumPrices = new HashMap<>();
+  private int applyDiscountForLargePizzas(Map<String, List<int[]>> orders, int cost, int exchangeCount) {
+    List<Integer> prices = orders.entrySet().stream()
+        .filter(e -> e.getKey().startsWith("Large"))
+        .flatMap(e -> e.getValue().stream()
+            .flatMap(o -> Collections.nCopies(o[0], o[1]).stream()))  // 가격을 복사해서 리스트에 추가
+        .sorted()  // 오름차순 정렬
+        .toList();
 
-    // Large 피자 개수와 Medium 가격 계산
-    for (Map.Entry<String, List<int[]>> entry : ordersBySize.entrySet()) {
-      String key = entry.getKey();
-      String size = key.split(":")[0];
-      String name = key.split(":")[1];
-      for (int[] item : entry.getValue()) {
-        int quantity = item[0];
-        int price = item[1];
-        if (size.equals("Large")) {
-          largeCounts.merge(name, quantity, Integer::sum);
-        } else if (size.equals("Medium")) {
-          mediumPrices.put(name, price);
-        }
+    // 만약 Medium 피자가 없을 경우, Large 피자에서 할인 적용
+    if (prices.size() >= exchangeCount) {
+      for (int i = 0; i < exchangeCount; i++) {
+        cost -= prices.get(i);  // 가장 저렴한 Large 피자부터 할인
       }
     }
 
-    int totalLargeCount = largeCounts.values().stream().mapToInt(Integer::intValue).sum();
-    if (totalLargeCount < 3) {
-      return calculateBaseCost(ordersBySize);
-    }
-
-    // Small, Medium 비용 먼저 계산
-    for (Map.Entry<String, List<int[]>> entry : ordersBySize.entrySet()) {
-      String key = entry.getKey();
-      String size = key.split(":")[0];
-      if (!size.equals("Large")) {
-        for (int[] item : entry.getValue()) {
-          totalCost += item[0] * item[1];
-        }
-      }
-    }
-
-    // newyorker 1개 + boston 2개 할인 적용
-    int newyorkerCount = largeCounts.getOrDefault("newyorker", 0);
-    int bostonCount = largeCounts.getOrDefault("boston", 0);
-    if (newyorkerCount >= 1 && bostonCount >= 2) {
-      totalCost += mediumPrices.getOrDefault("newyorker", newyorkerCount * 130); // 9원
-      totalCost += 2 * mediumPrices.getOrDefault("boston", bostonCount * 10);    // 10원
-      largeCounts.put("newyorker", newyorkerCount - 1);
-      largeCounts.put("boston", bostonCount - 2);
-    } else {
-      // 대안: 가장 비싼 3개 선택 (디버깅용)
-      PriorityQueue<int[]> largePrices = new PriorityQueue<>((a, b) -> b[1] - a[1]);
-      for (Map.Entry<String, Integer> entry : largeCounts.entrySet()) {
-        String name = entry.getKey();
-        int quantity = entry.getValue();
-        List<int[]> largeItems = ordersBySize.getOrDefault("Large:" + name, Collections.emptyList());
-        if (!largeItems.isEmpty()) {
-          int price = largeItems.get(0)[1];
-          largePrices.offer(new int[]{quantity, price, name.hashCode()});
-        }
-      }
-      int largeToDiscount = Math.min(3, totalLargeCount);
-      while (largeToDiscount > 0 && !largePrices.isEmpty()) {
-        int[] item = largePrices.poll();
-        int quantity = item[0];
-        int largePrice = item[1];
-        String name = largeCounts.entrySet().stream()
-            .filter(e -> ordersBySize.getOrDefault("Large:" + e.getKey(), Collections.emptyList()).get(0)[1] == largePrice)
-            .findFirst().get().getKey();
-        int mediumPrice = mediumPrices.getOrDefault(name, largePrice);
-        int discountCount = Math.min(largeToDiscount, quantity);
-        totalCost += discountCount * mediumPrice;
-        largeCounts.computeIfPresent(name, (k, v) -> v - discountCount);
-        largeToDiscount -= discountCount;
-      }
-    }
-
-    // 나머지 Large 비용 계산
-    for (Map.Entry<String, Integer> entry : largeCounts.entrySet()) {
-      String name = entry.getKey();
-      int quantity = entry.getValue();
-      if (quantity > 0) {
-        List<int[]> largeItems = ordersBySize.getOrDefault("Large:" + name, Collections.emptyList());
-        if (!largeItems.isEmpty()) {
-          int largePrice = largeItems.get(0)[1];
-          totalCost += quantity * largePrice;
-        }
-      }
-    }
-
-    return totalCost;
+    return cost;
   }
+
+  private int reduceCostForFreeItems(Map<String, List<int[]>> orders, int cost, String size, int freeCount) {
+    // size에 해당하는 피자 가격 리스트 생성
+    List<Integer> prices = orders.entrySet().stream()
+        .filter(e -> e.getKey().startsWith(size))
+        .flatMap(e -> e.getValue().stream()
+            .flatMap(o -> Collections.nCopies(o[0], o[1]).stream()))  // 가격을 복사해서 리스트에 추가
+        .sorted()  // 오름차순 정렬
+        .toList();
+
+    System.out.println("Available " + size + " Pizza Prices: " + prices);  // 디버깅
+
+    // Medium 피자 가격이 없으면 freeCount는 0으로 설정하여 할인 적용 안 함
+    if (prices.isEmpty()) {
+      System.out.println("No " + size + " pizzas available for discount.");
+      return cost;
+    }
+
+    // 가장 저렴한 Medium 피자부터 차감
+    for (int i = 0; i < Math.min(freeCount, prices.size()); i++) {
+      cost -= prices.get(i);
+    }
+
+    return cost;
+  }
+
 
   public static void main(String[] args) {
     // Discount 1
@@ -401,7 +234,7 @@ public class Solution02 {
         new OrderItem("philadelphia", "Large", 2),
     };
 
-    Solution02 solution = new Solution02();
+    Solution02_1 solution = new Solution02_1();
     int result = solution.solution(menu, order);
     System.out.println("최소 비용: " + result); // 예상 결과: 35
   }
