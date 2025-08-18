@@ -2,11 +2,11 @@ plugins {
     id 'org.springframework.boot' version '3.2.3'
     id 'io.spring.dependency-management' version '1.1.2'
     id 'java'
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
 
 configurations {
     compileOnly {
@@ -29,8 +29,20 @@ dependencies {
     //테스트에서 lombok 사용
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    // kotlin
+
+    // Kollin Logging
+    implementation 'io.github.oshai:kotlin-logging-jvm:7.0.7'
+
+    // Spring AI
+    implementation 'org.springframework.ai:spring-ai-openai:1.0.0'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(17)
 }
